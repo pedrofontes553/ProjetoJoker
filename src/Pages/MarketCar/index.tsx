@@ -1,6 +1,7 @@
 'use client';
 import React, { useState, useEffect } from 'react';
 import jsPDF from 'jspdf';
+import Image from 'next/image'; // Substitui o uso de <img>
 import './style.css';
 
 interface IProduto {
@@ -153,7 +154,7 @@ const CarMarketPage = () => {
         {produtos.map((produto) => (
           <div key={produto.id} className="course-item">
             <div className="course-image-wrapper">
-              <img src={produto.thumbnail} alt={produto.title} className="course-image" />
+              <Image src={produto.thumbnail} alt={produto.title} className="course-image" width={200} height={200} />
               <div className="course-overlay">
                 <p>{produto.title}</p>
                 <p>Preço: R${produto.price.toFixed(2)}</p>
@@ -170,7 +171,7 @@ const CarMarketPage = () => {
         <ul>
           {shoppingCurso.map((item) => (
             <li key={item.produto.id} className="cart-item">
-              <img src={item.produto.thumbnail} alt={item.produto.title} />
+              <Image src={item.produto.thumbnail} alt={item.produto.title} width={50} height={50} />
               <div>
                 <p>{item.produto.title}</p>
                 <p>Preço Unitário: R${item.produto.price.toFixed(2)}</p>
@@ -234,19 +235,16 @@ const CarMarketPage = () => {
             value={coupon}
             onChange={(e) => setCoupon(e.target.value)}
           />
-          <p className="coupon-note">DICA!! Use o Cupom: "WallaceQUERO50" e seja feliz</p>
+          <p className="coupon-note">DICA!! Use o Cupom: &quot;WallaceQUERO50&quot; e seja feliz</p>
           <div className="modal-actions">
             <button className="apply-coupon-button" onClick={handleApplyCoupon}>
               Aplicar
             </button>
-            <button
-              className="cancel-button"
-              onClick={() => {
-                setShowCouponModal(false);
-                document.querySelector('.overlay')?.classList.remove('visible');
-              }}
-            >
-              Cancelar
+            <button className="close-modal-button" onClick={() => {
+              setShowCouponModal(false);
+              document.querySelector('.overlay')?.classList.remove('visible');
+            }}>
+              Fechar
             </button>
           </div>
         </div>
