@@ -6,7 +6,7 @@ export default {
   };
   
 
-/** @type {import('next').NextConfig} */
-const nextConfig = {};
-// next.config.mjs
+// /** @type {import('next').NextConfig} */
+// const nextConfig = {};
+// // next.config.mjs
 
